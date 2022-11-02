@@ -1,4 +1,3 @@
-const { PeerServer } = require('peer');
 const express = require('express')
 const app = express()
 const server = require('http').Server(app)
@@ -29,6 +28,3 @@ server.listen(PORT, () => {
     console.log(`socket server run on port ${PORT}`)
 });
 
-const PEER_PORT = process.env.PEER_PORT || 3001
-const peerServer = PeerServer({ port: PEER_PORT, path: '/peer' })
-console.log(`peer server run on port ${PEER_PORT}`)
