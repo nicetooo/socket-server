@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
-// const server = require('http').Server(app)
-const io = require('socket.io')(app)
+const server = require('http').Server(app)
+const io = require('socket.io')(server)
 const { v4: uuidV4 } = require('uuid')
 
 app.get('/', (req, res) => {
@@ -24,7 +24,7 @@ io.on('connection', socket => {
 })
 
 const SOCKET_PORT = process.env.SOCKET_PORT || 3001
-app.listen(SOCKET_PORT, () => {
+server.listen(SOCKET_PORT, () => {
     console.log(`socket server run on port ${SOCKET_PORT}`)
 });
 
