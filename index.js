@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
-const server = require('http').Server(app)
-const io = require('socket.io')(server)
+// const server = require('http').Server(app)
+const io = require('socket.io')(app)
 const { v4: uuidV4 } = require('uuid')
 
 app.get('/', (req, res) => {
@@ -9,7 +9,7 @@ app.get('/', (req, res) => {
 })
 
 app.get('/:room', (req, res) => {
-    res.render('room', { roomId: req.params.room })
+    res.send({ roomId: req.params.room })
 })
 
 io.on('connection', socket => {
@@ -23,8 +23,8 @@ io.on('connection', socket => {
     })
 })
 
-const PORT = process.env.PORT || 3000
-server.listen(PORT, () => {
-    console.log(`socket server run on port ${PORT}`)
+const SOCKET_PORT = process.env.SOCKET_PORT || 3001
+app.listen(SOCKET_PORT, () => {
+    console.log(`socket server run on port ${SOCKET_PORT}`)
 });
 
