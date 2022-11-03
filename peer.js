@@ -1,3 +1,4 @@
 const { PeerServer } = require('peer');
-const peerServer = PeerServer({ path: '/peer', port: 443 })
+const PORT = 443;
+const peerServer = PeerServer({ path: '/peer', port: PORT })
 console.log(`peer server run on port ${PORT}`)
