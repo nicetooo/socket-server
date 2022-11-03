@@ -3,14 +3,14 @@
     "name": "socket-server",
     "builds": [
         {
-            "src": "index.js",
+            "src": "peer.js",
             "use": "@vercel/node"
         }
     ],
     "routes": [
         {
             "src": "/(.*)",
-            "dest": "/index.js"
+            "dest": "/peer.js"
         }
     ]
 }
